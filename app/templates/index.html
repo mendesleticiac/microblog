@@ -3,7 +3,7 @@
 {% block conteudo %}
 <h2>Hello {{ nome }}</h2>
 <p>
-    Profissão: {{dados.profissao}}<br/>
+    <img src="{{ url_for('static', filename='blogg.jpg') }}">
     Status: {{dados.Status}}
 </p>
 {% endblock %}
