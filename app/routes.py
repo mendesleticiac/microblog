@@ -20,8 +20,8 @@ def contato():
 def login():
     return render_template('login.html')
 
-@app.route ('/autentificar', methods=['GET', 'POST'])
+@app.route ('/autentificar', methods=['POST'])
 def autentificar():
-    usuario = request.args.get('usuario')
-    senha = request.args.get('senha')
+    usuario = request.form.get('usuario') #pega o valor do campo usuario do formulário
+    senha = request.form.get('senha')
     return(f"usuario: {usuario} e senha: {senha}")
