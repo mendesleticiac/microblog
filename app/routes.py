@@ -24,4 +24,4 @@ def login():
 def autentificar():
     usuario = request.args.get('usuario')
     senha = request.args.get('senha')
-    return(f"usuario: {usuario} senha: {senha}")
+    return(f"usuario: {usuario} e senha: {senha}")
