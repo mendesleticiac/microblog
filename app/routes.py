@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template
+from flask import request #recuperar dados do formulário
 
 @app.route('/')
 @app.route('/index' , defaults={"nome":"usuário"})
@@ -18,3 +19,9 @@ def contato():
 @app.route ('/login')
 def login():
     return render_template('login.html')
+
+@app.route ('/autentificar', methods=['GET', 'POST'])
+def autentificar():
+    usuario = request.args.get('usuario')
+    senha = request.args.get('senha')
+    return(f"usuario: {usuario} senha: {senha}")
