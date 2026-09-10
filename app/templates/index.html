@@ -2,12 +2,80 @@
 
 {% block conteudo %}
 
-<h2>Hello {{ nome }}</h2>
+<main class="pagina-inicial">
 
-<p>
-    <img class="imgquadrada" src="{{ url_for('static', filename='imagens/blogimg.jpg') }}" alt="Minha imagem">
+    <section class="cabecalho">
 
-    Profissão: {{dados.Profissao}} <br>
-    Status: {{dados.Status}}
-</p>
+        <h1>Sistema de Aquisições</h1>
+
+        <p>
+            Sistema de gerenciamento e acompanhamento de solicitações de aquisição.
+        </p>
+
+    </section>
+
+
+    <section class="resumo">
+
+        <h2>Resumo</h2>
+
+        <div class="resumo-grid">
+
+           <div class="informacao">
+                <span class="numero">{{ total_solicitacoes }}</span>
+                <span class="descricao">Solicitações</span>
+            </div>
+
+            <div class="informacao">
+                <span class="numero">{{em_analise}}</span>
+                <span class="descricao">Em análise</span>
+            </div>
+
+            <div class="informacao">
+                <span class="numero">{{aprovadas}}</span>
+                <span class="descricao">Aprovadas</span>
+            </div>
+
+            <div class="informacao">
+                <span class="numero">{{concluidas}}</span>
+                <span class="descricao">Concluídas</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="acesso">
+
+        <h2>Acesso rápido</h2>
+
+        <div class="opcoes">
+
+           <a href="/nova-solicitacao">
+                <strong>Nova solicitação</strong>
+                <span>Registrar uma nova solicitação de aquisição.</span>
+           </a>
+
+            <a href="/solicitacoes">
+                <strong>Solicitações</strong>
+                <span>Consultar e acompanhar solicitações.</span>
+            </a>
+
+            <a href="/setores">
+                <strong>Setores</strong>
+                <span>Consultar os setores cadastrados.</span>
+            </a>
+
+            <a href="/relatorios">
+                <strong>Relatórios</strong>
+                <span>Consultar informações e relatórios.</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
 {% endblock %}

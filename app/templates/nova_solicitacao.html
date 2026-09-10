@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="formulario">
+
+    <h2>Nova Solicitação de Aquisição</h2>
+
+    <form action="/criar-solicitacao" method="POST">
+
+        <label>Setor:</label>
+
+        <select name="setor" required>
+
+            <option value="">
+                Selecione o setor
+            </option>
+
+            {% for setor in setores %}
+
+            <option value="{{ setor[1] }}">
+                {{ setor[1] }} ({{ setor[2] }})
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <label>Material/Produto:</label>
+
+        <input
+            type="text"
+            name="material"
+            required
+        >
+
+        <label>Quantidade:</label>
+
+        <input
+            type="number"
+            name="quantidade"
+            min="1"
+            required
+        >
+
+        <label>Justificativa:</label>
+
+        <textarea
+            name="justificativa"
+            rows="5"
+            required
+        ></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Enviar solicitação
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="solicitacoes">
+
+    <h2>Solicitações de Aquisição</h2>
+
+    <div class="cabecalho-solicitacoes">
+
+        <p>
+            Lista de solicitações de aquisição cadastradas no sistema.
+        </p>
+
+        <a href="/nova-solicitacao" class="botao-nova-solicitacao">
+            + Nova solicitação
+        </a>
+
+    </div>
+
+    <table class="tabela-solicitacoes">
+
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Setor</th>
+            <th>Material/Produto</th>
+            <th>Quantidade</th>
+            <th>Justificativa</th>
+            <th>Status</th>
+        </tr>
+
+        {% for solicitacao in solicitacoes %}
+
+        <tr>
+
+            <!-- ID -->
+            <td>
+                {{ solicitacao[0] }}
+            </td>
+
+            <!-- DATA -->
+            <td>
+                {{ solicitacao[5].strftime('%d/%m/%Y %H:%M') }}
+            </td>
+
+            <!-- SETOR -->
+            <td>
+                {{ solicitacao[1] }}
+            </td>
+
+            <!-- MATERIAL -->
+            <td>
+                {{ solicitacao[2] }}
+            </td>
+
+            <!-- QUANTIDADE -->
+            <td>
+                {{ solicitacao[3] }}
+            </td>
+
+            <!-- JUSTIFICATIVA -->
+            <td>
+                {{ solicitacao[4] }}
+            </td>
+
+            <!-- STATUS -->
+            <td>
+
+                <form
+                    action="/atualizar-status/{{ solicitacao[0] }}"
+                    method="POST"
+                >
+
+                    <select
+                        name="status"
+                        class="seletor-status"
+                    >
+
+                        <option
+                            value="SOLICITADA"
+                            {% if solicitacao[6] == 'SOLICITADA' %}selected{% endif %}
+                        >
+                            SOLICITADA
+                        </option>
+
+                        <option
+                            value="EM ANÁLISE"
+                            {% if solicitacao[6] == 'EM ANÁLISE' %}selected{% endif %}
+                        >
+                            EM ANÁLISE
+                        </option>
+
+                        <option
+                            value="APROVADA"
+                            {% if solicitacao[6] == 'APROVADA' %}selected{% endif %}
+                        >
+                            APROVADA
+                        </option>
+
+                        <option
+                            value="NÃO APROVADA"
+                            {% if solicitacao[6] == 'NÃO APROVADA' %}selected{% endif %}
+                        >
+                            NÃO APROVADA
+                        </option>
+
+                        <option
+                            value="EM PROCESSO DE COMPRA"
+                            {% if solicitacao[6] == 'EM PROCESSO DE COMPRA' %}selected{% endif %}
+                        >
+                            EM PROCESSO DE COMPRA
+                        </option>
+
+                        <option
+                            value="ADQUIRIDA"
+                            {% if solicitacao[6] == 'ADQUIRIDA' %}selected{% endif %}
+                        >
+                            ADQUIRIDA
+                        </option>
+
+                    </select>
+
+                    <button
+                        type="submit"
+                        class="botao-status"
+                    >
+                        Atualizar
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

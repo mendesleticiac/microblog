@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="setores">
+
+    <h2>Setores cadastrados</h2>
+
+    <div class="cabecalho-setores">
+
+        <p>
+            Lista de setores cadastrados no sistema.
+        </p>
+
+        <a href="/novo-setor" class="botao-novo-setor">
+            + Novo setor
+        </a>
+
+    </div>
+
+
+    <table class="tabela-setores">
+
+        <tr>
+            <th>ID</th>
+            <th>Setor</th>
+            <th>Sigla</th>
+            <th>Ações</th>
+        </tr>
+
+
+        {% for setor in setores %}
+
+        <tr>
+
+            <td>{{ setor[0] }}</td>
+
+            <td>{{ setor[1] }}</td>
+
+            <td>{{ setor[2] }}</td>
+
+            <td>
+
+                <!-- BOTÃO EDITAR -->
+
+                <a
+                    href="/editar-setor/{{ setor[0] }}"
+                    class="botao-editar-setor"
+                >
+                    Editar
+                </a>
+
+
+                <!-- BOTÃO EXCLUIR -->
+
+                <form
+                    action="/excluir-setor/{{ setor[0] }}"
+                    method="POST"
+                    style="display:inline;"
+                    onsubmit="return confirmarExclusao()"
+                >
+
+                    <button
+                        type="submit"
+                        class="botao-excluir-setor"
+                    >
+                        Excluir
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+
+<script>
+
+function confirmarExclusao() {
+
+    let confirmar = confirm(
+        "Tem certeza que deseja excluir este setor?"
+    );
+
+    return confirmar;
+}
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="relatorios">
+
+    <h2>Relatórios</h2>
+
+    <p class="descricao-relatorio">
+        Resumo das solicitações de aquisição cadastradas no sistema.
+    </p>
+
+    <div class="cards-relatorio">
+
+        <div class="card-relatorio">
+            <span class="numero-relatorio">{{ total }}</span>
+            <span>Total de solicitações</span>
+        </div>
+
+        <div class="card-relatorio">
+            <span class="numero-relatorio">{{ em_analise }}</span>
+            <span>Em análise</span>
+        </div>
+
+        <div class="card-relatorio">
+            <span class="numero-relatorio">{{ aprovadas }}</span>
+            <span>Aprovadas</span>
+        </div>
+
+        <div class="card-relatorio">
+            <span class="numero-relatorio">{{ nao_aprovadas }}</span>
+            <span>Não aprovadas</span>
+        </div>
+
+        <div class="card-relatorio">
+            <span class="numero-relatorio">{{ em_processo }}</span>
+            <span>Em processo de compra</span>
+        </div>
+
+        <div class="card-relatorio">
+            <span class="numero-relatorio">{{ adquiridas }}</span>
+            <span>Adquiridas</span>
+        </div>
+
+    </div>
+
+    <div class="tabela-relatorio-container">
+
+        <h3>Detalhamento das solicitações</h3>
+
+        <table class="tabela-relatorio">
+
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Setor</th>
+                <th>Material/Produto</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+            </tr>
+
+            {% for solicitacao in solicitacoes %}
+
+            <tr>
+
+                <td>{{ solicitacao[0] }}</td>
+
+                <td>
+                    {{ solicitacao[1].strftime('%d/%m/%Y %H:%M') }}
+                </td>
+
+                <td>{{ solicitacao[2] }}</td>
+
+                <td>{{ solicitacao[3] }}</td>
+
+                <td>{{ solicitacao[4] }}</td>
+
+                <td>
+                    {{ solicitacao[5] }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <div class="acoes-relatorio">
+
+        <a href="/index" class="botao-voltar-relatorio">
+            Voltar para página inicial
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

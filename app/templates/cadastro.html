@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="formulario">
+
+    <h2>Cadastrar Usuário</h2>
+
+    <form action="/cadastrar" method="POST" onsubmit="return validarSenhas()">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+
+        <label>Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <label>Confirmar senha:</label>
+        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <p>
+        Já possui cadastro?
+        <a href="/login">Entrar</a>
+    </p>
+
+</div>
+
+<script>
+
+function validarSenhas() {
+
+    let senha = document.getElementById("senha").value;
+    let confirmar_senha = document.getElementById("confirmar_senha").value;
+
+    if (senha != confirmar_senha) {
+
+        alert("As senhas não são iguais!");
+
+        return false;
+    }
+
+    return true;
+}
+
+</script>
+
+{% endblock %}

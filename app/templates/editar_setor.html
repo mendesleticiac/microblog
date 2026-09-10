@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="formulario">
+
+    <h2>Editar Setor</h2>
+
+    <form action="/atualizar-setor/{{ setor[0] }}" method="POST">
+
+        <label>Nome do setor:</label>
+        <input
+            type="text"
+            name="nome"
+            value="{{ setor[1] }}"
+            required
+        >
+
+        <label>Sigla:</label>
+        <input
+            type="text"
+            name="sigla"
+            value="{{ setor[2] }}"
+            required
+        >
+
+        <button type="submit">
+            Salvar alterações
+        </button>
+
+    </form>
+
+    <p>
+        <a href="/setores">Voltar para setores</a>
+    </p>
+
+</div>
+
+{% endblock %}

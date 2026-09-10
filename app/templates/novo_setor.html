@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="formulario">
+
+    <h2>Novo Setor</h2>
+
+    <form action="/cadastrar-setor" method="POST">
+
+        <label>Nome do setor:</label>
+
+        <input
+            type="text"
+            name="nome"
+            required
+        >
+
+        <label>Sigla:</label>
+
+        <input
+            type="text"
+            name="sigla"
+            required
+        >
+
+        <button type="submit">
+            Cadastrar setor
+        </button>
+
+    </form>
+
+    <p>
+        <a href="/setores">Voltar para setores</a>
+    </p>
+
+</div>
+
+{% endblock %}

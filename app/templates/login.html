@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
+
+<div class="formulario">
+
     <h2>Login</h2>
-    <form action="/autentificar" method="post">
-        Usuario: <input type="text" name="usuario"><br/>
-        Senha: <input type="text" name="senha"><br/>
+
+    <form action="/autentificar" method="POST">
+
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+
+        <label>Senha:</label>
+        <input type="password" name="senha" required>
+
         <button type="submit">Entrar</button>
+
     </form>
+
+    <p>
+        Ainda não possui cadastro?
+        <a href="/cadastro">Cadastre-se</a>
+    </p>
+
+</div>
+
 {% endblock %}
